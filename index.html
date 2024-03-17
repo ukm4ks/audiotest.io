@@ -22,6 +22,12 @@
             width: 100%;
             height: 100%;
             z-index: 9999;
+            opacity: 1; /* Начальная прозрачность */
+            transition: opacity 2s ease; /* Плавный переход прозрачности */
+        }
+
+        .stars.hide-stars {
+            opacity: 0; /* Прозрачность при скрытии */
         }
 
         .star {
@@ -32,6 +38,7 @@
             border-radius: 50%;
             pointer-events: none;
             animation: twinkle 3s linear infinite;
+            opacity: 0; /* Начальная прозрачность */
         }
 
         @keyframes twinkle {
@@ -48,6 +55,8 @@
         .content {
             opacity: 0; /* Начальная непрозрачность */
             transition: opacity 2s ease; /* Плавный переход непрозрачности */
+            z-index: 1; /* Устанавливаем поверх звёзд */
+            position: relative;
         }
 
         .show-content {
@@ -155,6 +164,7 @@
             }
 
             setTimeout(function() {
+                document.querySelector('.stars').classList.add('hide-stars'); // Скрыть звезды с плавным переходом
                 document.querySelector('.content').classList.add('show-content'); // Добавляем класс для показа содержимого с плавным переходом
             }, 2000);
         });
