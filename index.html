@@ -12,6 +12,28 @@
             padding: 0;
             background-color: #f8f9fa;
             color: #343a40;
+            overflow-x: hidden; /* prevent horizontal scroll */
+        }
+
+        /* Styling for the splash screen */
+        #splash-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background-color: #8A2BE2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 1s ease-in-out; /* smooth transition */
+        }
+
+        /* Hide splash screen after page loads */
+        #splash-screen.loaded {
+            opacity: 0;
+            pointer-events: none;
         }
 
         header {
@@ -19,7 +41,6 @@
             color: #ffffff;
             padding: 20px;
             text-align: center;
-            position: relative; /* Добавлено для позиционирования звёзд */
         }
 
         nav {
@@ -61,59 +82,18 @@
             text-align: center;
             margin-top: 50px;
         }
-
-        /* Стили для звёзд */
-        .star {
-            position: absolute;
-            background-color: #fff;
-            width: 2px;
-            height: 2px;
-            border-radius: 50%;
-            pointer-events: none;
-        }
-
-        @keyframes twinkle {
-            0% {
-                transform: translateY(-100px);
-                opacity: 0;
-            }
-            100% {
-                transform: translateY(100vh);
-                opacity: 1;
-            }
-        }
+        
     </style>
 </head>
 <body>
 
+    <!-- Splash screen -->
+    <div id="splash-screen">
+        <h1>Вітаємо!</h1>
+    </div>
+
     <header>
         <h1>Вітаємо!</h1>
-        <!-- Анимация звёзд в хедере -->
-        <script>
-            const numHeaderStars = 30; // Количество звёзд в хедере
-
-            for (let i = 0; i < numHeaderStars; i++) {
-                const star = document.createElement('div');
-                star.className = 'star';
-                document.querySelector('header').appendChild(star);
-
-                // Генерация случайной позиции звезды в пределах хедера
-                const xy = getRandomPositionInHeader();
-                star.style.top = xy[0] + 'px';
-                star.style.left = xy[1] + 'px';
-
-                // Случайная скорость падения звезды
-                const speed = Math.random() * 2 + 1;
-                star.style.animation = `twinkle ${speed}s linear infinite`;
-            }
-
-            // Функция для генерации случайной позиции звезды в пределах хедера
-            function getRandomPositionInHeader() {
-                const x = Math.random() * window.innerWidth;
-                const y = Math.random() * window.innerHeight * 0.5; // Звёзды в половине высоты хедера
-                return [y, x];
-            }
-        </script>
     </header>
 
     <nav>
@@ -141,32 +121,6 @@
 
     <footer>
        <h5>&copy; 2024 LovelyLover</h5>
-       <!-- Анимация звёзд в футере -->
-        <script>
-            const numFooterStars = 30; // Количество звёзд в футере
-
-            for (let i = 0; i < numFooterStars; i++) {
-                const star = document.createElement('div');
-                star.className = 'star';
-                document.querySelector('footer').appendChild(star);
-
-                // Генерация случайной позиции звезды в пределах футера
-                const xy = getRandomPositionInFooter();
-                star.style.top = xy[0] + 'px';
-                star.style.left = xy[1] + 'px';
-
-                // Случайная скорость падения звезды
-                const speed = Math.random() * 2 + 1;
-                star.style.animation = `twinkle ${speed}s linear infinite`;
-            }
-
-            // Функция для генерации случайной позиции звезды в пределах футера
-            function getRandomPositionInFooter() {
-                const x = Math.random() * window.innerWidth;
-                const y = Math.random() * window.innerHeight * 0.5 + window.innerHeight * 0.5; // Звёзды в половине высоты футера
-                return [y, x];
-            }
-        </script>
     </footer>
 
     <script>
@@ -177,6 +131,9 @@
                     section.style.display = 'none';
                 }
             });
+            // Hide splash screen after page loads
+            var splashScreen = document.getElementById('splash-screen');
+            splashScreen.classList.add('loaded');
         });
 
         function showSection(sectionId) {
