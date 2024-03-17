@@ -142,11 +142,6 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            setTimeout(function() {
-                document.querySelector('.stars').style.display = 'none';
-                document.querySelector('.content').classList.add('show-content'); // Добавляем класс для показа содержимого с плавным переходом
-            }, 2000);
-
             const numStars = 300; // количество звезд
 
             // Создаем звезды
@@ -158,6 +153,10 @@
                 star.style.animationDuration = (Math.random() * 3 + 1) + 's'; // случайная продолжительность анимации
                 starsContainer.appendChild(star);
             }
+
+            setTimeout(function() {
+                document.querySelector('.content').classList.add('show-content'); // Добавляем класс для показа содержимого с плавным переходом
+            }, 2000);
         });
 
         function showSection(sectionId) {
