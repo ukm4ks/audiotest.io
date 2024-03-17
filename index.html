@@ -10,10 +10,9 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #000;
             color: #fff;
             overflow: hidden;
-            transition: background-color 2s ease; /* Добавляем плавный переход для фона */
+            transition: background-color 2s ease; /* Плавный переход фона */
         }
 
         .stars {
@@ -47,12 +46,12 @@
         }
 
         .content {
-            display: none;
+            opacity: 0; /* Начальная непрозрачность */
+            transition: opacity 2s ease; /* Плавный переход непрозрачности */
         }
 
         .show-content {
-            display: block;
-            transition: opacity 2s ease; /* Плавный переход для появления содержимого */
+            opacity: 1; /* Показываем содержимое с плавным переходом */
         }
 
         header {
