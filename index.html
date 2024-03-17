@@ -38,8 +38,8 @@
         .star {
             position: absolute;
             background-color: #fff;
-            width: 4px;
-            height: 4px;
+            width: 2px;
+            height: 2px;
             border-radius: 50%;
             pointer-events: none;
         }
@@ -60,6 +60,17 @@
             color: #ffffff;
             padding: 20px;
             text-align: center;
+            opacity: 0; /* initially hidden */
+            animation: fadeIn 3s forwards; /* fade in animation */
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
         }
 
         nav {
@@ -67,12 +78,8 @@
             color: #ffffff;
             padding: 10px;
             text-align: center;
-        }
-
-        nav a {
-            color: #ffffff;
-            text-decoration: none;
-            margin: 0 10px;
+            opacity: 0; /* initially hidden */
+            animation: fadeIn 3s forwards; /* fade in animation */
         }
 
         section {
@@ -134,12 +141,10 @@
                 return [y, x];
             }
         </script>
-        <h1>Вітаємо!</h1>
+        <header>
+            <h1 style="margin: 0;">Вітаємо!</h1>
+        </header>
     </div>
-
-    <header>
-        <h1>Вітаємо!</h1>
-    </header>
 
     <nav>
         <a href="#home" onclick="showSection('home')">Головна</a>
@@ -165,33 +170,28 @@
     </section>
 
     <footer>
-       <h5>&copy; 2024 LovelyLover</h5>
+        <h5>&copy; 2024 LovelyLover</h5>
     </footer>
 
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        var splashScreen = document.getElementById('splash-screen');
-        setTimeout(function() {
-            splashScreen.classList.add('loaded');
-        }, 3000); // 3000 milliseconds delay
-
-        // Показываем только секцию "Головна" при загрузке страницы
-        document.getElementById('home').style.display = 'block';
-        document.getElementById('homework').style.display = 'none';
-    });
-
-    function showSection(sectionId) {
-        var sections = document.querySelectorAll('section');
-        sections.forEach(function(section) {
-            if (section.id === sectionId) {
-                section.style.display = 'block';
-            } else {
-                section.style.display = 'none';
-            }
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var splashScreen = document.getElementById('splash-screen');
+            setTimeout(function() {
+                splashScreen.classList.add('loaded');
+            }, 3000); // 3000 milliseconds delay
         });
-    }
-</script>
 
+        function showSection(sectionId) {
+            var sections = document.querySelectorAll('section');
+            sections.forEach(function(section) {
+                if (section.id === sectionId) {
+                    section.style.display = 'block';
+                } else {
+                    section.style.display = 'none';
+                }
+            });
+        }
+    </script>
 
 </body>
 </html>
