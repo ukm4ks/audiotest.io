@@ -13,6 +13,7 @@
             background-color: #000;
             color: #fff;
             overflow: hidden;
+            transition: background-color 2s ease; /* Добавляем плавный переход для фона */
         }
 
         .stars {
@@ -47,6 +48,11 @@
 
         .content {
             display: none;
+        }
+
+        .show-content {
+            display: block;
+            transition: opacity 2s ease; /* Плавный переход для появления содержимого */
         }
 
         header {
@@ -139,18 +145,19 @@
         document.addEventListener('DOMContentLoaded', function() {
             setTimeout(function() {
                 document.querySelector('.stars').style.display = 'none';
-                document.querySelector('.content').style.display = 'block';
+                document.querySelector('.content').classList.add('show-content'); // Добавляем класс для показа содержимого с плавным переходом
             }, 2000);
 
             const numStars = 300; // количество звезд
 
             // Создаем звезды
+            const starsContainer = document.querySelector('.stars');
             for (let i = 0; i < numStars; i++) {
                 const star = document.createElement('div');
                 star.className = 'star';
                 star.style.left = Math.random() * 100 + 'vw'; // случайное положение по горизонтали
                 star.style.animationDuration = (Math.random() * 3 + 1) + 's'; // случайная продолжительность анимации
-                document.querySelector('.stars').appendChild(star);
+                starsContainer.appendChild(star);
             }
         });
 
