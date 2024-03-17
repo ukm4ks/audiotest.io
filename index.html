@@ -78,6 +78,7 @@
         section {
             padding: 40px;
             text-align: center;
+            display: none; /* Hide all sections by default */
         }
 
         footer {
@@ -192,6 +193,8 @@
             var splashScreen = document.getElementById('splash-screen');
             setTimeout(function() {
                 splashScreen.classList.add('loaded');
+                // После загрузки страницы показываем только главный раздел
+                showSection('home');
             }, 3000); // 3000 milliseconds delay
         });
 
