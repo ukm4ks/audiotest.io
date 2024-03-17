@@ -12,7 +12,8 @@
             padding: 0;
             background-color: #f8f9fa;
             color: #343a40;
-            overflow: hidden; /* Чтобы звёзды не создавали горизонтальный скролл */
+            overflow: hidden; /* чтобы звёзды не создавали горизонтальный скролл */
+            position: relative; /* чтобы звёзды были относительно body */
         }
 
         header {
@@ -20,7 +21,8 @@
             color: #ffffff;
             padding: 20px;
             text-align: center;
-            position: relative; /* Для позиционирования звёзд */
+            position: relative; /* для корректного отображения звёзд */
+            z-index: 2; /* чтобы header был выше звёзд */
         }
 
         nav {
@@ -28,6 +30,8 @@
             color: #ffffff;
             padding: 10px;
             text-align: center;
+            position: relative; /* для корректного отображения звёзд */
+            z-index: 2; /* чтобы навигация была выше звёзд */
         }
 
         nav a {
@@ -39,8 +43,8 @@
         section {
             padding: 40px;
             text-align: center;
-            position: relative; /* Для позиционирования звёзд */
-            z-index: 1; /* Чтобы звёзды не перекрывали контент */
+            position: relative; /* чтобы корректно отображались звёзды */
+            z-index: 2; /* чтобы контент был выше звёзд */
         }
 
         footer {
@@ -48,10 +52,9 @@
             color: #ffffff;
             text-align: center;
             padding: 10px 0;
-            position: absolute;
-            bottom: 0;
             width: 100%;
-            z-index: 1; /* Чтобы звёзды не перекрывали футер */
+            position: relative; /* чтобы корректно отображались звёзды */
+            z-index: 2; /* чтобы футер был выше звёзд */
         }
 
         footer h5 {
@@ -69,35 +72,34 @@
         /* Анимация для звёзд */
         .star {
             position: absolute;
-            background: transparent;
-            width: 2px;
-            height: 2px;
+            background: transparent url('https://www.freepngimg.com/thumb/star/4-gold-star-png-image-thumb.png') no-repeat center center; /* изображение звезды */
+            background-size: contain; /* чтобы изображение было под размеры */
+            width: 20px; /* ширина звезды */
+            height: 20px; /* высота звезды */
             animation: fall 5s linear infinite;
+            pointer-events: none; /* чтобы звёзды не были интерактивными */
         }
 
         @keyframes fall {
             0% {
-                transform: translateY(-100%);
+                transform: translateY(-10%);
             }
             100% {
-                transform: translateY(100vh);
+                transform: translateY(110%);
             }
         }
 
         /* Различные стили для звёзд */
         .star1 {
-            background: #ffffff;
-            left: 10%;
+            left: calc(10% - 10px); /* чтобы звёзды не выходили за пределы header и nav */
             animation-delay: 0s;
         }
         .star2 {
-            background: #ffffff;
-            left: 20%;
+            left: calc(20% - 10px);
             animation-delay: 1s;
         }
         .star3 {
-            background: #ffffff;
-            left: 30%;
+            left: calc(30% - 10px);
             animation-delay: 2s;
         }
         /* и так далее, можно добавить больше звёзд с разными стилями */
@@ -108,10 +110,6 @@
 
     <header>
         <h1>Вітаємо!</h1>
-        <!-- Добавляем звёзды в хедер -->
-        <div class="star star1"></div>
-        <div class="star star2"></div>
-        <div class="star star3"></div>
     </header>
 
     <nav>
@@ -141,16 +139,13 @@
        <h5>&copy; 2024 LovelyLover</h5>
     </footer>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            var sections = document.querySelectorAll('section');
-            sections.forEach(function(section) {
-                if (section.id !== 'home') {
-                    section.style.display = 'none';
-                }
-            });
-        });
+    <!-- Добавляем звёзды как фоновый элемент -->
+    <div class="star star1"></div>
+    <div class="star star2"></div>
+    <div class="star star3"></div>
+    <!-- и так далее, добавляем больше звёзд с разными стилями -->
 
+    <script>
         function showSection(sectionId) {
             var sections = document.querySelectorAll('section');
             sections.forEach(function(section) {
