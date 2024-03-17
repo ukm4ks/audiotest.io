@@ -10,9 +10,9 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 0;
+            overflow: hidden;
             color: #fff;
             background-color: #000; /* Чёрный цвет фона */
-            overflow: hidden;
             transition: background-color 2s ease; /* Плавный переход фона */
         }
 
@@ -23,6 +23,7 @@
             width: 100%;
             height: 100%;
             z-index: 9999;
+            overflow: hidden;
             opacity: 1; /* Начальная прозрачность */
             transition: opacity 2s ease; /* Плавный переход прозрачности */
         }
@@ -58,10 +59,12 @@
             transition: opacity 2s ease; /* Плавный переход непрозрачности */
             z-index: 1; /* Устанавливаем поверх звёзд */
             position: relative;
+            display: none; /* Скрыть содержимое по умолчанию */
         }
 
         .show-content {
             opacity: 1; /* Показываем содержимое с плавным переходом */
+            display: block; /* Показать содержимое с плавным переходом */
         }
 
         header {
@@ -165,8 +168,8 @@
             }
 
             setTimeout(function() {
-                document.querySelector('.stars').classList.add('hide-stars'); // Скрыть звезды с плавным переходом
-                document.querySelector('.content').classList.add('show-content'); // Добавляем класс для показа содержимого с плавным переходом
+                document.querySelector('.stars').classList.add('hide-stars');
+                document.querySelector('.content').classList.add('show-content');
             }, 2000);
         });
 
