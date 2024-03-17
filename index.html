@@ -10,10 +10,9 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 0;
-            overflow-x: hidden; /* prevent horizontal scroll */
+            overflow-x: hidden;
         }
 
-        /* Styling for the splash screen */
         #splash-screen {
             position: fixed;
             top: 0;
@@ -26,10 +25,9 @@
             align-items: center;
             z-index: 9999;
             opacity: 1;
-            transition: opacity 2s ease-in-out; /* smooth transition */
+            transition: opacity 2s ease-in-out;
         }
 
-        /* Hide splash screen after page loads */
         #splash-screen.loaded {
             opacity: 0;
             pointer-events: none;
@@ -70,7 +68,7 @@
         }
 
         nav a {
-            color: #ffffff; /* Цвет текста для ссылок внутри элемента nav */
+            color: #ffffff;
             text-decoration: none;
             margin: 0 10px;
         }
@@ -78,7 +76,7 @@
         section {
             padding: 40px;
             text-align: center;
-            display: none; /* Hide all sections by default */
+            display: none;
         }
 
         footer {
@@ -103,7 +101,6 @@
             margin-top: 50px;
         }
 
-        /* Animation for fadeIn and fadeOut */
         @keyframes fadeInOut {
             0% {
                 opacity: 0;
@@ -118,34 +115,26 @@
 
         /* Styling for fading in and out */
         .fadeInOut {
-            animation: fadeInOut 3s forwards;
+            animation: fadeInOut 4s forwards;
         }
     </style>
 </head>
 <body>
 
-    <!-- Splash screen with starry sky background -->
     <div id="splash-screen">
         <script>
-            const numStars = 300; // количество звезд
-
-            // Создаем звезды
+            const numStars = 300;
             for (let i = 0; i < numStars; i++) {
                 const star = document.createElement('div');
                 star.className = 'star';
                 document.getElementById('splash-screen').appendChild(star);
-
-                // Случайное позиционирование звезд
                 const xy = getRandomPosition();
                 star.style.top = xy[0] + 'px';
                 star.style.left = xy[1] + 'px';
-
-                // Случайная скорость для имитации падения звезд
                 const speed = Math.random() * 2 + 1;
                 star.style.animation = `twinkle ${speed}s linear infinite`;
             }
 
-            // Функция для генерации случайной позиции звезды на экране
             function getRandomPosition() {
                 const x = window.innerWidth * Math.random();
                 const y = window.innerHeight * Math.random();
@@ -185,7 +174,7 @@
     </section>
 
     <footer>
-        <h5>&copy; 2024 LovelyLover</h5>
+        <h5>&copy; 2024 Марчук Максим</h5>
     </footer>
 
     <script>
@@ -193,9 +182,8 @@
             var splashScreen = document.getElementById('splash-screen');
             setTimeout(function() {
                 splashScreen.classList.add('loaded');
-                // После загрузки страницы показываем только главный раздел
                 showSection('home');
-            }, 3000); // 3000 milliseconds delay
+            }, 5000); // Увеличиваем задержку до 5 секунд (5000 миллисекунд)
         });
 
         function showSection(sectionId) {
