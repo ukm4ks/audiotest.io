@@ -60,17 +60,6 @@
             color: #ffffff;
             padding: 20px;
             text-align: center;
-            opacity: 0; /* initially hidden */
-            animation: fadeIn 3s forwards; /* fade in animation */
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
         }
 
         nav {
@@ -78,8 +67,6 @@
             color: #ffffff;
             padding: 10px;
             text-align: center;
-            opacity: 0; /* initially hidden */
-            animation: fadeIn 3s forwards; /* fade in animation */
         }
 
         section {
@@ -108,6 +95,24 @@
         .audio-player {
             text-align: center;
             margin-top: 50px;
+        }
+
+        /* Animation for fadeIn and fadeOut */
+        @keyframes fadeInOut {
+            0% {
+                opacity: 0;
+            }
+            50% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+            }
+        }
+
+        /* Styling for fading in and out */
+        .fadeInOut {
+            animation: fadeInOut 3s forwards;
         }
     </style>
 </head>
@@ -141,10 +146,14 @@
                 return [y, x];
             }
         </script>
-        <header>
+        <div id="welcome-text" class="fadeInOut">
             <h1 style="margin: 0;">Вітаємо!</h1>
-        </header>
+        </div>
     </div>
+
+    <header>
+        <h1>Вітаємо!</h1>
+    </header>
 
     <nav>
         <a href="#home" onclick="showSection('home')">Головна</a>
