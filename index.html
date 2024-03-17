@@ -78,6 +78,7 @@
         section {
             padding: 40px;
             text-align: center;
+            display: none; /* hide all sections by default */
         }
 
         footer {
@@ -173,6 +174,10 @@
         setTimeout(function() {
             splashScreen.classList.add('loaded');
         }, 3000); // 3000 milliseconds delay
+
+        // Показываем только секцию "Головна" при загрузке страницы
+        document.getElementById('home').style.display = 'block';
+        document.getElementById('homework').style.display = 'none';
     });
 
     function showSection(sectionId) {
