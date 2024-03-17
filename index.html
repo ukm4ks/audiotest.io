@@ -10,61 +10,9 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 0;
-            overflow: hidden;
-            color: #fff;
-            background-color: #000; /* Чёрный цвет фона */
-            transition: background-color 2s ease; /* Плавный переход фона */
-        }
-
-        .stars {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 9999;
-            overflow: hidden;
-            opacity: 1; /* Начальная прозрачность */
-            transition: opacity 2s ease; /* Плавный переход прозрачности */
-        }
-
-        .stars.hide-stars {
-            opacity: 0; /* Прозрачность при скрытии */
-        }
-
-        .star {
-            position: absolute;
-            background-color: #fff;
-            width: 2px;
-            height: 2px;
-            border-radius: 50%;
-            pointer-events: none;
-            animation: twinkle 3s linear infinite;
-            opacity: 0; /* Начальная прозрачность */
-        }
-
-        @keyframes twinkle {
-            0% {
-                transform: translateY(-100px);
-                opacity: 0;
-            }
-            100% {
-                transform: translateY(100vh);
-                opacity: 1;
-            }
-        }
-
-        .content {
-            opacity: 0; /* Начальная непрозрачность */
-            transition: opacity 2s ease; /* Плавный переход непрозрачности */
-            z-index: 1; /* Устанавливаем поверх звёзд */
-            position: relative;
-            display: none; /* Скрыть содержимое по умолчанию */
-        }
-
-        .show-content {
-            opacity: 1; /* Показываем содержимое с плавным переходом */
-            display: block; /* Показать содержимое с плавным переходом */
+            background-color: #f8f9fa;
+            color: #343a40;
+            overflow: hidden; /* Чтобы звёзды не создавали горизонтальный скролл */
         }
 
         header {
@@ -72,6 +20,7 @@
             color: #ffffff;
             padding: 20px;
             text-align: center;
+            position: relative; /* Для позиционирования звёзд */
         }
 
         nav {
@@ -90,6 +39,8 @@
         section {
             padding: 40px;
             text-align: center;
+            position: relative; /* Для позиционирования звёзд */
+            z-index: 1; /* Чтобы звёзды не перекрывали контент */
         }
 
         footer {
@@ -100,6 +51,7 @@
             position: absolute;
             bottom: 0;
             width: 100%;
+            z-index: 1; /* Чтобы звёзды не перекрывали футер */
         }
 
         footer h5 {
@@ -113,64 +65,90 @@
             text-align: center;
             margin-top: 50px;
         }
+
+        /* Анимация для звёзд */
+        .star {
+            position: absolute;
+            background: transparent;
+            width: 2px;
+            height: 2px;
+            animation: fall 5s linear infinite;
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(-100%);
+            }
+            100% {
+                transform: translateY(100vh);
+            }
+        }
+
+        /* Различные стили для звёзд */
+        .star1 {
+            background: #ffffff;
+            left: 10%;
+            animation-delay: 0s;
+        }
+        .star2 {
+            background: #ffffff;
+            left: 20%;
+            animation-delay: 1s;
+        }
+        .star3 {
+            background: #ffffff;
+            left: 30%;
+            animation-delay: 2s;
+        }
+        /* и так далее, можно добавить больше звёзд с разными стилями */
         
     </style>
 </head>
 <body>
-    <div class="stars">
-        <!-- JavaScript будет создавать и добавлять звезды здесь -->
-    </div>
-    <div class="content">
-        <header>
-            <h1>Вітаємо!</h1>
-        </header>
 
-        <nav>
-            <a href="#home" onclick="showSection('home')">Головна</a>
-            <a href="#homework" onclick="showSection('homework')">Домашні завдання</a>
-        </nav>
+    <header>
+        <h1>Вітаємо!</h1>
+        <!-- Добавляем звёзды в хедер -->
+        <div class="star star1"></div>
+        <div class="star star2"></div>
+        <div class="star star3"></div>
+    </header>
 
-        <section id="home">
-            <h2>Головна</h2>
-            <p>Нарешті щось цікавеньке!</p>
-            <div class="audio-player">
-              <audio id="audio" controls>
-                <source src="sound.mp3" type="audio/mpeg">
-              </audio>
-            </div>
-        </section>
+    <nav>
+        <a href="#home" onclick="showSection('home')">Головна</a>
+        <a href="#homework" onclick="showSection('homework')">Домашні завдання</a>
+    </nav>
 
-        <section id="homework">
-            <h1>Заголовок 1</h1>
-            <h2>Заголовок 2</h2>
-            <h3>Заголовок 3</h3>
-            <h4>Заголовок 4</h4>
-            <h5>Заголовок 5</h5>
-        </section>
+    <section id="home">
+        <h2>Головна</h2>
+        <p>Нарешті щось цікавеньке!</p>
+        <div class="audio-player">
+          <audio id="audio" controls>
+            <source src="sound.mp3" type="audio/mpeg">
+          </audio>
+        </div>
+    </section>
 
-        <footer>
-           <h5>&copy; 2024 LovelyLover</h5>
-        </footer>
-    </div>
+    <section id="homework">
+        <h1>Заголовок 1</h1>
+        <h2>Заголовок 2</h2>
+        <h3>Заголовок 3</h3>
+        <h4>Заголовок 4</h4>
+        <h5>Заголовок 5</h5>
+    </section>
+
+    <footer>
+       <h5>&copy; 2024 LovelyLover</h5>
+    </footer>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            const numStars = 300; // количество звезд
-
-            // Создаем звезды
-            const starsContainer = document.querySelector('.stars');
-            for (let i = 0; i < numStars; i++) {
-                const star = document.createElement('div');
-                star.className = 'star';
-                star.style.left = Math.random() * 100 + 'vw'; // случайное положение по горизонтали
-                star.style.animationDuration = (Math.random() * 3 + 1) + 's'; // случайная продолжительность анимации
-                starsContainer.appendChild(star);
-            }
-
-            setTimeout(function() {
-                document.querySelector('.stars').classList.add('hide-stars');
-                document.querySelector('.content').classList.add('show-content');
-            }, 2000);
+            var sections = document.querySelectorAll('section');
+            sections.forEach(function(section) {
+                if (section.id !== 'home') {
+                    section.style.display = 'none';
+                }
+            });
         });
 
         function showSection(sectionId) {
@@ -181,5 +159,6 @@
             document.getElementById(sectionId).style.display = 'block';
         }
     </script>
+
 </body>
 </html>
