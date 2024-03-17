@@ -167,22 +167,26 @@
        <h5>&copy; 2024 LovelyLover</h5>
     </footer>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            var splashScreen = document.getElementById('splash-screen');
-            setTimeout(function() {
-                splashScreen.classList.add('loaded');
-            }, 3000); // 3000 milliseconds delay
-        });
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var splashScreen = document.getElementById('splash-screen');
+        setTimeout(function() {
+            splashScreen.classList.add('loaded');
+        }, 3000); // 3000 milliseconds delay
+    });
 
-        function showSection(sectionId) {
-            var sections = document.querySelectorAll('section');
-            sections.forEach(function(section) {
+    function showSection(sectionId) {
+        var sections = document.querySelectorAll('section');
+        sections.forEach(function(section) {
+            if (section.id === sectionId) {
+                section.style.display = 'block';
+            } else {
                 section.style.display = 'none';
-            });
-            document.getElementById(sectionId).style.display = 'block';
-        }
-    </script>
+            }
+        });
+    }
+</script>
+
 
 </body>
 </html>
