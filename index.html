@@ -3,21 +3,61 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Audio Player</title>
-
+  <title>Starry Sky Background</title>
   <style>
-    .audio-player {
-      text-align: center;
-      margin-top: 50px;
+    body {
+      margin: 0;
+      overflow: hidden;
+      background-color: #000;
+    }
+
+    .star {
+      position: absolute;
+      background-color: #fff;
+      width: 2px;
+      height: 2px;
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    @keyframes twinkle {
+      0% {
+        transform: translateY(-100px);
+        opacity: 0;
+      }
+      100% {
+        transform: translateY(100vh);
+        opacity: 1;
+      }
     }
   </style>
-  
 </head>
 <body>
-  <div class="audio-player">
-    <audio id="audio" controls>
-      <source src="song.mp3" type="audio/mpeg">
-    </audio>
-  </div>
+  <script>
+    const numStars = 100; // количество звезд
+
+    // Создаем звезды
+    for (let i = 0; i < numStars; i++) {
+      const star = document.createElement('div');
+      star.className = 'star';
+      document.body.appendChild(star);
+
+      // Случайное позиционирование звезд
+      const xy = getRandomPosition();
+      star.style.top = xy[0] + 'px';
+      star.style.left = xy[1] + 'px';
+
+      // Случайная скорость для имитации падения звезд
+      const speed = Math.random() * 2 + 1;
+      star.style.animation = `twinkle ${speed}s linear infinite`;
+    }
+
+    // Функция для генерации случайной позиции звезды на экране
+    function getRandomPosition() {
+      const x = window.innerWidth * Math.random();
+      const y = window.innerHeight * Math.random();
+      return [y, x];
+    }
+  </script>
 </body>
 </html>
