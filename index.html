@@ -27,7 +27,8 @@
             justify-content: center;
             align-items: center;
             z-index: 9999;
-            transition: opacity 1s ease-in-out; /* smooth transition */
+            opacity: 1;
+            transition: opacity 2s ease-in-out; /* smooth transition */
         }
 
         /* Hide splash screen after page loads */
@@ -125,15 +126,10 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            var sections = document.querySelectorAll('section');
-            sections.forEach(function(section) {
-                if (section.id !== 'home') {
-                    section.style.display = 'none';
-                }
-            });
-            // Hide splash screen after page loads
             var splashScreen = document.getElementById('splash-screen');
-            splashScreen.classList.add('loaded');
+            setTimeout(function() {
+                splashScreen.classList.add('loaded');
+            }, 3000); // 3000 milliseconds delay
         });
 
         function showSection(sectionId) {
