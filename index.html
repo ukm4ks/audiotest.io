@@ -12,8 +12,6 @@
             padding: 0;
             background-color: #f8f9fa;
             color: #343a40;
-            overflow: hidden; /* чтобы звёзды не создавали горизонтальный скролл */
-            position: relative; /* чтобы звёзды были относительно body */
         }
 
         header {
@@ -21,8 +19,7 @@
             color: #ffffff;
             padding: 20px;
             text-align: center;
-            position: relative; /* для корректного отображения звёзд */
-            z-index: 2; /* чтобы header был выше звёзд */
+            position: relative; /* Добавлено для позиционирования звёзд */
         }
 
         nav {
@@ -30,8 +27,6 @@
             color: #ffffff;
             padding: 10px;
             text-align: center;
-            position: relative; /* для корректного отображения звёзд */
-            z-index: 2; /* чтобы навигация была выше звёзд */
         }
 
         nav a {
@@ -43,8 +38,6 @@
         section {
             padding: 40px;
             text-align: center;
-            position: relative; /* чтобы корректно отображались звёзды */
-            z-index: 2; /* чтобы контент был выше звёзд */
         }
 
         footer {
@@ -52,9 +45,9 @@
             color: #ffffff;
             text-align: center;
             padding: 10px 0;
+            position: absolute;
+            bottom: 0;
             width: 100%;
-            position: relative; /* чтобы корректно отображались звёзды */
-            z-index: 2; /* чтобы футер был выше звёзд */
         }
 
         footer h5 {
@@ -69,47 +62,58 @@
             margin-top: 50px;
         }
 
-        /* Анимация для звёзд */
+        /* Стили для звёзд */
         .star {
             position: absolute;
-            background: transparent url('https://www.freepngimg.com/thumb/star/4-gold-star-png-image-thumb.png') no-repeat center center; /* изображение звезды */
-            background-size: contain; /* чтобы изображение было под размеры */
-            width: 20px; /* ширина звезды */
-            height: 20px; /* высота звезды */
-            animation: fall 5s linear infinite;
-            pointer-events: none; /* чтобы звёзды не были интерактивными */
+            background-color: #fff;
+            width: 2px;
+            height: 2px;
+            border-radius: 50%;
+            pointer-events: none;
         }
 
-        @keyframes fall {
+        @keyframes twinkle {
             0% {
-                transform: translateY(-10%);
+                transform: translateY(-100px);
+                opacity: 0;
             }
             100% {
-                transform: translateY(110%);
+                transform: translateY(100vh);
+                opacity: 1;
             }
         }
-
-        /* Различные стили для звёзд */
-        .star1 {
-            left: calc(10% - 10px); /* чтобы звёзды не выходили за пределы header и nav */
-            animation-delay: 0s;
-        }
-        .star2 {
-            left: calc(20% - 10px);
-            animation-delay: 1s;
-        }
-        .star3 {
-            left: calc(30% - 10px);
-            animation-delay: 2s;
-        }
-        /* и так далее, можно добавить больше звёзд с разными стилями */
-        
     </style>
 </head>
 <body>
 
     <header>
         <h1>Вітаємо!</h1>
+        <!-- Анимация звёзд в хедере -->
+        <script>
+            const numHeaderStars = 30; // Количество звёзд в хедере
+
+            for (let i = 0; i < numHeaderStars; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                document.querySelector('header').appendChild(star);
+
+                // Генерация случайной позиции звезды в пределах хедера
+                const xy = getRandomPositionInHeader();
+                star.style.top = xy[0] + 'px';
+                star.style.left = xy[1] + 'px';
+
+                // Случайная скорость падения звезды
+                const speed = Math.random() * 2 + 1;
+                star.style.animation = `twinkle ${speed}s linear infinite`;
+            }
+
+            // Функция для генерации случайной позиции звезды в пределах хедера
+            function getRandomPositionInHeader() {
+                const x = Math.random() * window.innerWidth;
+                const y = Math.random() * window.innerHeight * 0.5; // Звёзды в половине высоты хедера
+                return [y, x];
+            }
+        </script>
     </header>
 
     <nav>
@@ -137,15 +141,44 @@
 
     <footer>
        <h5>&copy; 2024 LovelyLover</h5>
+       <!-- Анимация звёзд в футере -->
+        <script>
+            const numFooterStars = 30; // Количество звёзд в футере
+
+            for (let i = 0; i < numFooterStars; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                document.querySelector('footer').appendChild(star);
+
+                // Генерация случайной позиции звезды в пределах футера
+                const xy = getRandomPositionInFooter();
+                star.style.top = xy[0] + 'px';
+                star.style.left = xy[1] + 'px';
+
+                // Случайная скорость падения звезды
+                const speed = Math.random() * 2 + 1;
+                star.style.animation = `twinkle ${speed}s linear infinite`;
+            }
+
+            // Функция для генерации случайной позиции звезды в пределах футера
+            function getRandomPositionInFooter() {
+                const x = Math.random() * window.innerWidth;
+                const y = Math.random() * window.innerHeight * 0.5 + window.innerHeight * 0.5; // Звёзды в половине высоты футера
+                return [y, x];
+            }
+        </script>
     </footer>
 
-    <!-- Добавляем звёзды как фоновый элемент -->
-    <div class="star star1"></div>
-    <div class="star star2"></div>
-    <div class="star star3"></div>
-    <!-- и так далее, добавляем больше звёзд с разными стилями -->
-
     <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var sections = document.querySelectorAll('section');
+            sections.forEach(function(section) {
+                if (section.id !== 'home') {
+                    section.style.display = 'none';
+                }
+            });
+        });
+
         function showSection(sectionId) {
             var sections = document.querySelectorAll('section');
             sections.forEach(function(section) {
