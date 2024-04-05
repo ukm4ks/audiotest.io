@@ -73,7 +73,7 @@ nav a {
 section {
     padding: 40px;
     text-align: center;
-    display: none;
+    display: block;
 }
 
 footer {
