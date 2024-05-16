@@ -1,139 +1,75 @@
-html {
-    scroll-behavior: smooth;
-}
-
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    margin-bottom: 60px;
-    overflow-x: hidden;
 }
 
-#splash-screen {
+.support-container {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    background-color: #000;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 9999;
-    opacity: 1;
-    transition: opacity 2s ease-in-out;
+    bottom: 20px;
+    right: 20px;
 }
 
-#splash-screen.loaded {
-    opacity: 0;
-    pointer-events: none;
-}
-
-.star {
-    position: absolute;
-    background-color: #fff;
-    width: 2px;
-    height: 2px;
-    border-radius: 50%;
-    pointer-events: none;
-}
-
-@keyframes twinkle {
-    0% {
-        transform: translateY(-100px);
-        opacity: 0;
-    }
-    100% {
-        transform: translateY(100vh);
-        opacity: 1;
-    }
-}
-
-header {
-    background-color: #8A2BE2;
-    color: #ffffff;
-    padding: 20px;
-    text-align: center;
-}
-
-nav {
-    background-color: #343a40;
-    color: #ffffff;
-    padding: 10px;
-    text-align: center;
-}
-
-nav a {
-    color: #ffffff;
-    text-decoration: none;
-    margin: 0 10px;
-}
-
-section {
-    padding: 40px;
-    text-align: center;
-    display: block;
-}
-
-footer {
-    background-color: #343a40;
-    color: #ffffff;
-    text-align: center;
-    padding: 10px 0;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    z-index: 999;
-}
-
-footer h5 {
-    margin: 2px 0;
-    padding: 0;
-    font-size: 11px;
-    font-weight: normal;
-}
-
-
-@keyframes fadeInOut {
-    0% {
-        opacity: 0;
-    }
-    50% {
-        opacity: 1;
-    }
-    100% {
-        opacity: 0;
-    }
-}
-
-.fadeInOut {
-    animation: fadeInOut 5s forwards;
-}
-
-.image-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.button {
-    display: flex;
+.open-button {
+    font-size: 16px;
     padding: 10px 20px;
     background-color: #007bff;
-    color: #fff;
-    width: 40%;
+    color: white;
     border: none;
     border-radius: 5px;
-    font-size: 16px;
     cursor: pointer;
-    text-decoration: none;
-    transition: background-color 0.3s ease; 
-    flex-direction: column;
-    align-items: center;
-    margin-top: 50px; 
 }
 
-.button:hover {
-    background-color: #0056b3;
+.support-chat {
+    display: none;
+    width: 300px;
+    background-color: #f1f1f1;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.chat-header {
+    background-color: #007bff;
+    color: white;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.chat-body {
+    height: 200px;
+    overflow-y: auto;
+    padding: 10px;
+}
+
+.chat-footer {
+    display: flex;
+    padding: 10px;
+}
+
+.chat-footer input[type="text"] {
+    flex: 1;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+}
+
+.chat-footer button {
+    padding: 8px 15px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+.close-button {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
 }
