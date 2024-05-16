@@ -1,20 +1,17 @@
 function openSupport() {
     var supportChat = document.getElementById("supportChat");
-    supportChat.style.display = "block";
-    supportChat.classList.add("chat-open");
-
-    var openButton = document.querySelector(".open-button");
-    openButton.classList.add("hidden");
+    supportChat.classList.add("chat-open"); // Добавляем класс для плавного появления
+    setTimeout(function() {
+        supportChat.style.display = "block";
+    }, 10); // Добавляем небольшую задержку перед показом окна
+    document.querySelector(".open-button").classList.add("hidden"); // Скрываем кнопку открытия
 }
 
 function closeSupport() {
     var supportChat = document.getElementById("supportChat");
-    supportChat.classList.remove("chat-open");
-    
+    supportChat.classList.remove("chat-open"); // Удаляем класс для плавного исчезновения
     setTimeout(function() {
         supportChat.style.display = "none";
-    }, 300); // Задержка, соответствующая времени анимации (0.3 секунды)
-
-    var openButton = document.querySelector(".open-button");
-    openButton.classList.remove("hidden");
+    }, 300); // Добавляем задержку перед скрытием окна
+    document.querySelector(".open-button").classList.remove("hidden"); // Показываем кнопку открытия
 }
