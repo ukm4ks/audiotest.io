@@ -3,33 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Сайт Марчука Максима - Головна</title>
-    <link rel="stylesheet" type="text/css" href="styles.css">
+    <title>Саппорт</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div id="splash-screen">
-        <script src="scripts.js"></script>
-        <div id="welcome-text" class="fadeInOut">
-            <h1 style="margin: 0; color: white;">Вітаємо!</h1>
+
+<div class="support-container">
+    <button class="open-button" onclick="openSupport()">Открыть поддержку</button>
+    <div class="support-chat" id="supportChat">
+        <div class="chat-header">
+            <h2>Чат поддержки</h2>
+            <button class="close-button" onclick="closeSupport()">✕</button>
+        </div>
+        <div class="chat-body">
+            <!-- Здесь будет содержимое чата -->
+        </div>
+        <div class="chat-footer">
+            <input type="text" placeholder="Напишите сообщение...">
+            <button>Отправить</button>
         </div>
     </div>
+</div>
 
-    <header>
-        <h1>Вітаємо!</h1>
-    </header>
-
-    <nav>
-        <a href="index.html">Головна</a>
-        <a href="homework.html">Домашні завдання</a>
-    </nav>
-
-    <section>
-        <h2>Головна</h2>
-        <p>Нарешті щось цікавеньке!</p>
-    </section>
-
-    <footer>
-        <h5>&copy; 2024 Марчук Максим</h5>
-    </footer>
+<script src="script.js"></script>
 </body>
 </html>
