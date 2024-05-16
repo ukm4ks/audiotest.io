@@ -18,7 +18,7 @@ body {
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    transition: opacity 0.3s ease-in-out;
+    transition: opacity 0.3s ease-in-out; /* Плавное исчезновение/появление */
 }
 
 .open-button.hidden {
@@ -32,11 +32,11 @@ body {
     border: 1px solid #ddd;
     border-radius: 5px;
     overflow: hidden;
-    transition: transform 0.3s ease-in-out;
     transform: translateY(100%);
+    transition: transform 0.3s ease-in-out; /* Плавное появление/исчезновение */
 }
 
-.chat-open {
+.support-chat.chat-open {
     transform: translateY(0);
 }
 
